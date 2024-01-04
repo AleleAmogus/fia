@@ -7,6 +7,7 @@ public class Individual
     private float angle;
     private float wait;
     private float power;
+    private float fitness;
 
     // Costruttore
     public Individual(float initialAngle, float initialWait, float initialPower)
@@ -14,6 +15,7 @@ public class Individual
         angle = initialAngle;
         wait = initialWait;
         power = initialPower;
+        fitness = -1f;
     }
 
     // Getter e setter per 'angle'
@@ -36,5 +38,12 @@ public class Individual
         get { return power; }
         set { power = value; }
     }
+
+    // Getter e setter per 'fitness'
+        public float Fitness
+        {
+            get { return fitness; }
+            set { fitness = value; }
+        }
 }
 
