@@ -110,6 +110,8 @@ public class Palla : MonoBehaviour
         transform.position = startingPosition;
         transform.rotation = Quaternion.identity;
         directionMarker.SetActive(true);
+        powerDirection = 1;
+        powerMultiplier = 0f;
         SwitchState(GameState.SelectingDirection);
     }
 
@@ -124,5 +126,9 @@ public class Palla : MonoBehaviour
 
     public float GetPerformanceIndicator(){
         return performanceIndicator;
+    }
+
+    public float GetPowerIncreaseSpeed(){
+        return powerIncreaseSpeed;
     }
 }

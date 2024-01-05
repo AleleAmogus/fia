@@ -1,8 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Individual
+public class Individual : ICloneable
 {
     private float angle;
     private float wait;
@@ -22,21 +23,21 @@ public class Individual
     public float Angle
     {
         get { return angle; }
-        set { angle = value; }
+        set { angle = value%360; }
     }
 
     // Getter e setter per 'wait'
     public float Wait
     {
         get { return wait; }
-        set { wait = value; }
+        set { wait = value; if(wait > GeneticAlgorithm.maxWait)wait = GeneticAlgorithm.maxWait;if(wait < 0)wait = 0;}
     }
 
     // Getter e setter per 'power'
     public float Power
     {
         get { return power; }
-        set { power = value; }
+        set { power = value; if(power > Palla.maxPower)power = Palla.maxPower;if(power < 0)power = 0;}
     }
 
     // Getter e setter per 'fitness'
@@ -45,5 +46,14 @@ public class Individual
             get { return fitness; }
             set { fitness = value; }
         }
+
+    public object Clone(){
+        return new Individual(angle, wait, power);
+    }
+
+    public override string ToString()
+       {
+          return "angle: " + angle + ", wait: " + wait + ", power: " + power + ", fitness: " + fitness;
+       }
 }
 

@@ -1008,7 +1008,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 120
-  basePower: 600
+  basePower: 1100
   directionMarker: {fileID: 822302330}
   powerSelector: {fileID: 243602565}
 --- !u!212 &782694486
