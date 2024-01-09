@@ -38,30 +38,33 @@ public class GeneticAlgorithm : MonoBehaviour
     }
 
     IEnumerator Execute(){
-        Individual winner = null;
-        int gen = 0;
-        while(/*DEBUG*/!Input.GetKey(KeyCode.S)){
-        foreach(Individual i in individuals){
-                palla.SetRotation(i.Angle);
-                yield return new WaitForSeconds(i.Wait);
-                palla.SwitchToSelectingPower();
-                yield return new WaitForSeconds(i.Power/palla.GetPowerIncreaseSpeed());
-                palla.SwitchToShot();
-                yield return new WaitUntil(() => palla.GetGameState() == GameState.SelectingDirection);
-                i.Fitness = palla.GetPerformanceIndicator();
-                if(i.Fitness == 0){
-                    winner = i;
-                    break;
+        while(true){
+            Individual winner = null;
+            int gen = 0;
+            while(true){
+                foreach(Individual i in individuals){
+                    palla.SetRotation(i.Angle);
+                    yield return new WaitForSeconds(i.Wait);
+                    palla.SwitchToSelectingPower();
+                    yield return new WaitForSeconds(i.Power/palla.GetPowerIncreaseSpeed());
+                    palla.SwitchToShot();
+                    yield return new WaitUntil(() => palla.GetGameState() == GameState.SelectingDirection);
+                    i.Fitness = palla.GetPerformanceIndicator();
+                    if(i.Fitness == 0){
+                        winner = i;
+                        break;
+                    }
                 }
+                if(winner != null)
+                    break;
+                Selection();
+                Crossover();
+                Mutation();
+                gen++;
             }
-            if(winner != null)
-                break;
-            Selection();
-            Crossover();
-            Mutation();
-            gen++;
+            Logger.AppendAILog("\nSOLUTION WAS FOUND IN GENERATION " + gen + ": " + winner.ToString());
+            Logger.AddSolution(gen);
         }
-        Logger.AppendAILog("\nSOLUTION WAS FOUND IN GENERATION " + gen + ": " + winner.ToString());
     }
     //Roulette Wheel
     void Selection(){

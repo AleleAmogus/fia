@@ -1011,6 +1011,7 @@ MonoBehaviour:
   basePower: 1100
   directionMarker: {fileID: 822302330}
   powerSelector: {fileID: 243602565}
+  isAIactive: 1
 --- !u!212 &782694486
 SpriteRenderer:
   m_ObjectHideFlags: 0

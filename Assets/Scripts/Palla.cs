@@ -25,7 +25,7 @@ public class Palla : MonoBehaviour
     int powerDirection = 1;
     float lastShootTime = 0f;
 
-    bool isAIactive = false;
+    [SerializeField] bool isAIactive = false;
 
     void Start()
     {
