@@ -11,4 +11,14 @@ public class Logger : MonoBehaviour
             sw.WriteLine(content);
         }
     }
+    public static void AppendIndividualsAsLaTeX(Individual[] individuals){
+            using(StreamWriter sw = File.AppendText("AIlog.txt"))
+            {
+                int j = 0;
+                foreach(Individual i in individuals){
+                    sw.WriteLine("\\hline\nIndividuo " + j + "&" + i.Angle + "&" + i.Wait + "&" + i.Power + "&" + i.Fitness + "\\\\");
+                    j++;
+                }
+            }
+        }
 }

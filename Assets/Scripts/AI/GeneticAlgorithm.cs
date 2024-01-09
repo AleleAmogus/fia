@@ -65,7 +65,8 @@ public class GeneticAlgorithm : MonoBehaviour
     }
     //Roulette Wheel
     void Selection(){
-        Logger.AppendAILog("\nSTARTING SELECTION\n" + individuals[0].ToString() + "\n" + individuals[1].ToString() + "\n" + individuals[2].ToString() + "\n" + individuals[3].ToString());
+        Logger.AppendAILog("\nSTARTING SELECTION\n");
+        Logger.AppendIndividualsAsLaTeX(individuals);
         Individual[] temp = new Individual[population];
         /*DEBUG*/temp[0] = individuals[0];temp[1] = individuals[1];temp[2] = individuals[2];temp[3] = individuals[3];
         float sum = 0f;
@@ -81,13 +82,16 @@ public class GeneticAlgorithm : MonoBehaviour
                     break;
                 }
             }
-            Logger.AppendAILog("\nITERATION NUMBER " + j + "\n"+temp[0].ToString() + "\n" + temp[1].ToString() + "\n" + temp[2].ToString() + "\n" + temp[3].ToString());
+            Logger.AppendAILog("\nITERATION NUMBER " + j);
+            Logger.AppendIndividualsAsLaTeX(temp);
         }
         individuals = temp;
     }
 
     void Crossover(){
-        Logger.AppendAILog("\nSTARTING CROSSOVER\n" + individuals[0].ToString() + "\n" + individuals[1].ToString() + "\n" + individuals[2].ToString() + "\n" + individuals[3].ToString());
+        Logger.AppendAILog("\nSTARTING CROSSOVER\n");
+        Logger.AppendIndividualsAsLaTeX(individuals);
+
         for(int i = 0; i < population-1; i++){
             int val = Random.Range(0, 3);
             if(val == 0){
@@ -103,12 +107,14 @@ public class GeneticAlgorithm : MonoBehaviour
                 individuals[i].Power = individuals[i+1].Power;
                 individuals[i+1].Power = temp;
             }
-        Logger.AppendAILog("\nITERATION NUMBER " + i + "\n" +individuals[0].ToString() + "\n"+ individuals[1].ToString() + "\n" + individuals[2].ToString() + "\n" + individuals[3].ToString());
+        Logger.AppendAILog("\nITERATION NUMBER " + i);
+        Logger.AppendIndividualsAsLaTeX(individuals);
         }
     }
 
     void Mutation(){
-        Logger.AppendAILog("\nSTARTING MUTATION\n" + individuals[0].ToString() + "\n" + individuals[1].ToString() + "\n" + individuals[2].ToString() + "\n" + individuals[3].ToString());
+        Logger.AppendAILog("\nSTARTING MUTATION");
+        Logger.AppendIndividualsAsLaTeX(individuals);
         foreach(Individual i in individuals){
             int val = Random.Range(0, 3);
             if(val == 0){
@@ -122,6 +128,7 @@ public class GeneticAlgorithm : MonoBehaviour
                 i.Power += amount;
             }
         }
-        Logger.AppendAILog("\nAFTER MUTATION\n" +individuals[0].ToString() + "\n"+ individuals[1].ToString() + "\n" + individuals[2].ToString() + "\n" + individuals[3].ToString());
+        Logger.AppendAILog("\nAFTER MUTATION\n");
+        Logger.AppendIndividualsAsLaTeX(individuals);
     }
 }

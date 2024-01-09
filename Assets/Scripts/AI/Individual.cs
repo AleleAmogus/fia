@@ -10,7 +10,14 @@ public class Individual : ICloneable
     private float power;
     private float fitness;
 
-    // Costruttore
+    // Costruttori
+    public Individual(float initialAngle, float initialWait, float initialPower, float initialFitness)
+    {
+        angle = initialAngle;
+        wait = initialWait;
+        power = initialPower;
+        fitness = initialFitness;
+    }
     public Individual(float initialAngle, float initialWait, float initialPower)
     {
         angle = initialAngle;
@@ -48,7 +55,7 @@ public class Individual : ICloneable
         }
 
     public object Clone(){
-        return new Individual(angle, wait, power);
+        return new Individual(angle, wait, power, fitness);
     }
 
     public override string ToString()

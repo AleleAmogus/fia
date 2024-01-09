@@ -25,7 +25,7 @@ public class Palla : MonoBehaviour
     int powerDirection = 1;
     float lastShootTime = 0f;
 
-    bool isAIactive = true;
+    bool isAIactive = false;
 
     void Start()
     {
@@ -112,6 +112,7 @@ public class Palla : MonoBehaviour
             performanceIndicator = 0f;
         transform.position = startingPosition;
         transform.rotation = Quaternion.identity;
+        rb.velocity = Vector3.zero;
         directionMarker.SetActive(true);
         powerDirection = 1;
         powerMultiplier = 0f;
