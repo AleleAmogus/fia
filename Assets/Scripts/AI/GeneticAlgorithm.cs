@@ -38,7 +38,9 @@ public class GeneticAlgorithm : MonoBehaviour
     }
 
     IEnumerator Execute(){
-        while(!Input.GetKey(KeyCode.S)){
+        Individual winner = null;
+        int gen = 0;
+        while(/*DEBUG*/!Input.GetKey(KeyCode.S)){
         foreach(Individual i in individuals){
                 palla.SetRotation(i.Angle);
                 yield return new WaitForSeconds(i.Wait);
@@ -47,15 +49,23 @@ public class GeneticAlgorithm : MonoBehaviour
                 palla.SwitchToShot();
                 yield return new WaitUntil(() => palla.GetGameState() == GameState.SelectingDirection);
                 i.Fitness = palla.GetPerformanceIndicator();
+                if(i.Fitness == 0){
+                    winner = i;
+                    break;
+                }
             }
+            if(winner != null)
+                break;
             Selection();
             Crossover();
             Mutation();
+            gen++;
         }
+        Logger.AppendAILog("\nSOLUTION WAS FOUND IN GENERATION " + gen + ": " + winner.ToString());
     }
     //Roulette Wheel
     void Selection(){
-        Debug.Log("\nSTARTING SELECTION\n" + individuals[0].ToString() + "\n" + individuals[1].ToString() + "\n" + individuals[2].ToString() + "\n" + individuals[3].ToString());
+        Logger.AppendAILog("\nSTARTING SELECTION\n" + individuals[0].ToString() + "\n" + individuals[1].ToString() + "\n" + individuals[2].ToString() + "\n" + individuals[3].ToString());
         Individual[] temp = new Individual[population];
         /*DEBUG*/temp[0] = individuals[0];temp[1] = individuals[1];temp[2] = individuals[2];temp[3] = individuals[3];
         float sum = 0f;
@@ -71,13 +81,13 @@ public class GeneticAlgorithm : MonoBehaviour
                     break;
                 }
             }
-            Debug.Log("\nITERATION NUMBER \n" + j +temp[0].ToString() + "\n" + temp[1].ToString() + "\n" + temp[2].ToString() + "\n" + temp[3].ToString());
+            Logger.AppendAILog("\nITERATION NUMBER " + j + "\n"+temp[0].ToString() + "\n" + temp[1].ToString() + "\n" + temp[2].ToString() + "\n" + temp[3].ToString());
         }
         individuals = temp;
     }
 
     void Crossover(){
-        Debug.Log("\nSTARTING CROSSOVER\n" + individuals[0].ToString() + "\n" + individuals[1].ToString() + "\n" + individuals[2].ToString() + "\n" + individuals[3].ToString());
+        Logger.AppendAILog("\nSTARTING CROSSOVER\n" + individuals[0].ToString() + "\n" + individuals[1].ToString() + "\n" + individuals[2].ToString() + "\n" + individuals[3].ToString());
         for(int i = 0; i < population-1; i++){
             int val = Random.Range(0, 3);
             if(val == 0){
@@ -93,12 +103,12 @@ public class GeneticAlgorithm : MonoBehaviour
                 individuals[i].Power = individuals[i+1].Power;
                 individuals[i+1].Power = temp;
             }
-        Debug.Log("\nITERATION NUMBER \n" + i +individuals[0].ToString() + "\n"+ individuals[1].ToString() + "\n" + individuals[2].ToString() + "\n" + individuals[3].ToString());
+        Logger.AppendAILog("\nITERATION NUMBER " + i + "\n" +individuals[0].ToString() + "\n"+ individuals[1].ToString() + "\n" + individuals[2].ToString() + "\n" + individuals[3].ToString());
         }
     }
 
     void Mutation(){
-        Debug.Log("\nSTARTING MUTATION\n" + individuals[0].ToString() + "\n" + individuals[1].ToString() + "\n" + individuals[2].ToString() + "\n" + individuals[3].ToString());
+        Logger.AppendAILog("\nSTARTING MUTATION\n" + individuals[0].ToString() + "\n" + individuals[1].ToString() + "\n" + individuals[2].ToString() + "\n" + individuals[3].ToString());
         foreach(Individual i in individuals){
             int val = Random.Range(0, 3);
             if(val == 0){
@@ -112,6 +122,6 @@ public class GeneticAlgorithm : MonoBehaviour
                 i.Power += amount;
             }
         }
-        Debug.Log("\nAFTER MUTATION\n" +individuals[0].ToString() + "\n"+ individuals[1].ToString() + "\n" + individuals[2].ToString() + "\n" + individuals[3].ToString());
+        Logger.AppendAILog("\nAFTER MUTATION\n" +individuals[0].ToString() + "\n"+ individuals[1].ToString() + "\n" + individuals[2].ToString() + "\n" + individuals[3].ToString());
     }
 }

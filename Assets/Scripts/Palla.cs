@@ -95,7 +95,7 @@ public class Palla : MonoBehaviour
 
     private void ShotBehaviour(){
         if((Time.time >= lastShootTime + 1 && rb.velocity.magnitude < 0.1f) || Time.time >= lastShootTime + 10){
-            Reset();
+            Reset(false);
         }
     }
 
@@ -105,8 +105,11 @@ public class Palla : MonoBehaviour
             ro.SetStop(val);
     }
 
-    public void Reset(){
-        performanceIndicator = Mathf.Abs((FindObjectOfType<Hole>().transform.position - transform.position).magnitude);
+    public void Reset(bool win){
+        if(!win)
+            performanceIndicator = 10f/Mathf.Abs((FindObjectOfType<Hole>().transform.position - transform.position).magnitude);
+        else
+            performanceIndicator = 0f;
         transform.position = startingPosition;
         transform.rotation = Quaternion.identity;
         directionMarker.SetActive(true);

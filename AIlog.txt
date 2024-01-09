@@ -1,0 +1,265 @@
+
+STARTING SELECTION
+angle: 156,9572, wait: 2,440922, power: 0,5574776, fitness: 1,467162
+angle: 276,8409, wait: 2,131122, power: 1,918325, fitness: 0,7512624
+angle: 334,9707, wait: 1,865175, power: 1,537355, fitness: 0,8793614
+angle: 263,9423, wait: 1,085956, power: 0,4556007, fitness: 1,350176
+
+ITERATION NUMBER 0
+angle: 263,9423, wait: 1,085956, power: 0,4556007, fitness: -1
+angle: 276,8409, wait: 2,131122, power: 1,918325, fitness: 0,7512624
+angle: 334,9707, wait: 1,865175, power: 1,537355, fitness: 0,8793614
+angle: 263,9423, wait: 1,085956, power: 0,4556007, fitness: 1,350176
+
+ITERATION NUMBER 1
+angle: 263,9423, wait: 1,085956, power: 0,4556007, fitness: -1
+angle: 334,9707, wait: 1,865175, power: 1,537355, fitness: -1
+angle: 334,9707, wait: 1,865175, power: 1,537355, fitness: 0,8793614
+angle: 263,9423, wait: 1,085956, power: 0,4556007, fitness: 1,350176
+
+ITERATION NUMBER 2
+angle: 263,9423, wait: 1,085956, power: 0,4556007, fitness: -1
+angle: 334,9707, wait: 1,865175, power: 1,537355, fitness: -1
+angle: 263,9423, wait: 1,085956, power: 0,4556007, fitness: -1
+angle: 263,9423, wait: 1,085956, power: 0,4556007, fitness: 1,350176
+
+ITERATION NUMBER 3
+angle: 263,9423, wait: 1,085956, power: 0,4556007, fitness: -1
+angle: 334,9707, wait: 1,865175, power: 1,537355, fitness: -1
+angle: 263,9423, wait: 1,085956, power: 0,4556007, fitness: -1
+angle: 276,8409, wait: 2,131122, power: 1,918325, fitness: -1
+
+STARTING CROSSOVER
+angle: 263,9423, wait: 1,085956, power: 0,4556007, fitness: -1
+angle: 334,9707, wait: 1,865175, power: 1,537355, fitness: -1
+angle: 263,9423, wait: 1,085956, power: 0,4556007, fitness: -1
+angle: 276,8409, wait: 2,131122, power: 1,918325, fitness: -1
+
+ITERATION NUMBER 0
+angle: 263,9423, wait: 1,085956, power: 1,537355, fitness: -1
+angle: 334,9707, wait: 1,865175, power: 0,4556007, fitness: -1
+angle: 263,9423, wait: 1,085956, power: 0,4556007, fitness: -1
+angle: 276,8409, wait: 2,131122, power: 1,918325, fitness: -1
+
+ITERATION NUMBER 1
+angle: 263,9423, wait: 1,085956, power: 1,537355, fitness: -1
+angle: 263,9423, wait: 1,865175, power: 0,4556007, fitness: -1
+angle: 334,9707, wait: 1,085956, power: 0,4556007, fitness: -1
+angle: 276,8409, wait: 2,131122, power: 1,918325, fitness: -1
+
+ITERATION NUMBER 2
+angle: 263,9423, wait: 1,085956, power: 1,537355, fitness: -1
+angle: 263,9423, wait: 1,865175, power: 0,4556007, fitness: -1
+angle: 334,9707, wait: 1,085956, power: 1,918325, fitness: -1
+angle: 276,8409, wait: 2,131122, power: 0,4556007, fitness: -1
+
+STARTING MUTATION
+angle: 263,9423, wait: 1,085956, power: 1,537355, fitness: -1
+angle: 263,9423, wait: 1,865175, power: 0,4556007, fitness: -1
+angle: 334,9707, wait: 1,085956, power: 1,918325, fitness: -1
+angle: 276,8409, wait: 2,131122, power: 0,4556007, fitness: -1
+
+AFTER MUTATION
+angle: 263,9423, wait: 1,085956, power: 1,25433, fitness: -1
+angle: 263,9423, wait: 1,804655, power: 0,4556007, fitness: -1
+angle: 334,6586, wait: 1,085956, power: 1,918325, fitness: -1
+angle: 274,7784, wait: 2,131122, power: 0,4556007, fitness: -1
+
+STARTING SELECTION
+angle: 263,9423, wait: 1,085956, power: 1,25433, fitness: 2,975641
+angle: 263,9423, wait: 1,804655, power: 0,4556007, fitness: 1,273331
+angle: 334,6586, wait: 1,085956, power: 1,918325, fitness: 1,027909
+angle: 274,7784, wait: 2,131122, power: 0,4556007, fitness: 0,9096362
+
+ITERATION NUMBER 0
+angle: 274,7784, wait: 2,131122, power: 0,4556007, fitness: -1
+angle: 263,9423, wait: 1,804655, power: 0,4556007, fitness: 1,273331
+angle: 334,6586, wait: 1,085956, power: 1,918325, fitness: 1,027909
+angle: 274,7784, wait: 2,131122, power: 0,4556007, fitness: 0,9096362
+
+ITERATION NUMBER 1
+angle: 274,7784, wait: 2,131122, power: 0,4556007, fitness: -1
+angle: 263,9423, wait: 1,085956, power: 1,25433, fitness: -1
+angle: 334,6586, wait: 1,085956, power: 1,918325, fitness: 1,027909
+angle: 274,7784, wait: 2,131122, power: 0,4556007, fitness: 0,9096362
+
+ITERATION NUMBER 2
+angle: 274,7784, wait: 2,131122, power: 0,4556007, fitness: -1
+angle: 263,9423, wait: 1,085956, power: 1,25433, fitness: -1
+angle: 263,9423, wait: 1,085956, power: 1,25433, fitness: -1
+angle: 274,7784, wait: 2,131122, power: 0,4556007, fitness: 0,9096362
+
+ITERATION NUMBER 3
+angle: 274,7784, wait: 2,131122, power: 0,4556007, fitness: -1
+angle: 263,9423, wait: 1,085956, power: 1,25433, fitness: -1
+angle: 263,9423, wait: 1,085956, power: 1,25433, fitness: -1
+angle: 263,9423, wait: 1,804655, power: 0,4556007, fitness: -1
+
+STARTING CROSSOVER
+angle: 274,7784, wait: 2,131122, power: 0,4556007, fitness: -1
+angle: 263,9423, wait: 1,085956, power: 1,25433, fitness: -1
+angle: 263,9423, wait: 1,085956, power: 1,25433, fitness: -1
+angle: 263,9423, wait: 1,804655, power: 0,4556007, fitness: -1
+
+ITERATION NUMBER 0
+angle: 263,9423, wait: 2,131122, power: 0,4556007, fitness: -1
+angle: 274,7784, wait: 1,085956, power: 1,25433, fitness: -1
+angle: 263,9423, wait: 1,085956, power: 1,25433, fitness: -1
+angle: 263,9423, wait: 1,804655, power: 0,4556007, fitness: -1
+
+ITERATION NUMBER 1
+angle: 263,9423, wait: 2,131122, power: 0,4556007, fitness: -1
+angle: 274,7784, wait: 1,085956, power: 1,25433, fitness: -1
+angle: 263,9423, wait: 1,085956, power: 1,25433, fitness: -1
+angle: 263,9423, wait: 1,804655, power: 0,4556007, fitness: -1
+
+ITERATION NUMBER 2
+angle: 263,9423, wait: 2,131122, power: 0,4556007, fitness: -1
+angle: 274,7784, wait: 1,085956, power: 1,25433, fitness: -1
+angle: 263,9423, wait: 1,085956, power: 1,25433, fitness: -1
+angle: 263,9423, wait: 1,804655, power: 0,4556007, fitness: -1
+
+STARTING MUTATION
+angle: 263,9423, wait: 2,131122, power: 0,4556007, fitness: -1
+angle: 274,7784, wait: 1,085956, power: 1,25433, fitness: -1
+angle: 263,9423, wait: 1,085956, power: 1,25433, fitness: -1
+angle: 263,9423, wait: 1,804655, power: 0,4556007, fitness: -1
+
+AFTER MUTATION
+angle: 263,9423, wait: 2,36749, power: 0,4556007, fitness: -1
+angle: 274,7784, wait: 0,8652831, power: 1,25433, fitness: -1
+angle: 263,9423, wait: 1,085956, power: 1,407994, fitness: -1
+angle: 263,9423, wait: 1,306503, power: 0,4556007, fitness: -1
+
+STARTING SELECTION
+angle: 263,9423, wait: 2,36749, power: 0,4556007, fitness: 1,290536
+angle: 274,7784, wait: 0,8652831, power: 1,25433, fitness: 0,7459555
+angle: 263,9423, wait: 1,085956, power: 1,407994, fitness: 0,8400036
+angle: 263,9423, wait: 1,306503, power: 0,4556007, fitness: 1,289737
+
+ITERATION NUMBER 0
+angle: 263,9423, wait: 1,085956, power: 1,407994, fitness: -1
+angle: 274,7784, wait: 0,8652831, power: 1,25433, fitness: 0,7459555
+angle: 263,9423, wait: 1,085956, power: 1,407994, fitness: 0,8400036
+angle: 263,9423, wait: 1,306503, power: 0,4556007, fitness: 1,289737
+
+ITERATION NUMBER 1
+angle: 263,9423, wait: 1,085956, power: 1,407994, fitness: -1
+angle: 263,9423, wait: 2,36749, power: 0,4556007, fitness: -1
+angle: 263,9423, wait: 1,085956, power: 1,407994, fitness: 0,8400036
+angle: 263,9423, wait: 1,306503, power: 0,4556007, fitness: 1,289737
+
+ITERATION NUMBER 2
+angle: 263,9423, wait: 1,085956, power: 1,407994, fitness: -1
+angle: 263,9423, wait: 2,36749, power: 0,4556007, fitness: -1
+angle: 263,9423, wait: 1,306503, power: 0,4556007, fitness: -1
+angle: 263,9423, wait: 1,306503, power: 0,4556007, fitness: 1,289737
+
+ITERATION NUMBER 3
+angle: 263,9423, wait: 1,085956, power: 1,407994, fitness: -1
+angle: 263,9423, wait: 2,36749, power: 0,4556007, fitness: -1
+angle: 263,9423, wait: 1,306503, power: 0,4556007, fitness: -1
+angle: 263,9423, wait: 1,085956, power: 1,407994, fitness: -1
+
+STARTING CROSSOVER
+angle: 263,9423, wait: 1,085956, power: 1,407994, fitness: -1
+angle: 263,9423, wait: 2,36749, power: 0,4556007, fitness: -1
+angle: 263,9423, wait: 1,306503, power: 0,4556007, fitness: -1
+angle: 263,9423, wait: 1,085956, power: 1,407994, fitness: -1
+
+ITERATION NUMBER 0
+angle: 263,9423, wait: 1,085956, power: 0,4556007, fitness: -1
+angle: 263,9423, wait: 2,36749, power: 1,407994, fitness: -1
+angle: 263,9423, wait: 1,306503, power: 0,4556007, fitness: -1
+angle: 263,9423, wait: 1,085956, power: 1,407994, fitness: -1
+
+ITERATION NUMBER 1
+angle: 263,9423, wait: 1,085956, power: 0,4556007, fitness: -1
+angle: 263,9423, wait: 1,306503, power: 1,407994, fitness: -1
+angle: 263,9423, wait: 2,36749, power: 0,4556007, fitness: -1
+angle: 263,9423, wait: 1,085956, power: 1,407994, fitness: -1
+
+ITERATION NUMBER 2
+angle: 263,9423, wait: 1,085956, power: 0,4556007, fitness: -1
+angle: 263,9423, wait: 1,306503, power: 1,407994, fitness: -1
+angle: 263,9423, wait: 2,36749, power: 1,407994, fitness: -1
+angle: 263,9423, wait: 1,085956, power: 0,4556007, fitness: -1
+
+STARTING MUTATION
+angle: 263,9423, wait: 1,085956, power: 0,4556007, fitness: -1
+angle: 263,9423, wait: 1,306503, power: 1,407994, fitness: -1
+angle: 263,9423, wait: 2,36749, power: 1,407994, fitness: -1
+angle: 263,9423, wait: 1,085956, power: 0,4556007, fitness: -1
+
+AFTER MUTATION
+angle: 256,4259, wait: 1,085956, power: 0,4556007, fitness: -1
+angle: 254,8025, wait: 1,306503, power: 1,407994, fitness: -1
+angle: 271,3474, wait: 2,36749, power: 1,407994, fitness: -1
+angle: 263,9423, wait: 1,085956, power: 0,349606, fitness: -1
+
+STARTING SELECTION
+angle: 256,4259, wait: 1,085956, power: 0,4556007, fitness: 1,356002
+angle: 254,8025, wait: 1,306503, power: 1,407994, fitness: 3,449657
+angle: 271,3474, wait: 2,36749, power: 1,407994, fitness: 1,07024
+angle: 263,9423, wait: 1,085956, power: 0,349606, fitness: 1,626699
+
+ITERATION NUMBER 0
+angle: 263,9423, wait: 1,085956, power: 0,349606, fitness: -1
+angle: 254,8025, wait: 1,306503, power: 1,407994, fitness: 3,449657
+angle: 271,3474, wait: 2,36749, power: 1,407994, fitness: 1,07024
+angle: 263,9423, wait: 1,085956, power: 0,349606, fitness: 1,626699
+
+ITERATION NUMBER 1
+angle: 263,9423, wait: 1,085956, power: 0,349606, fitness: -1
+angle: 256,4259, wait: 1,085956, power: 0,4556007, fitness: -1
+angle: 271,3474, wait: 2,36749, power: 1,407994, fitness: 1,07024
+angle: 263,9423, wait: 1,085956, power: 0,349606, fitness: 1,626699
+
+ITERATION NUMBER 2
+angle: 263,9423, wait: 1,085956, power: 0,349606, fitness: -1
+angle: 256,4259, wait: 1,085956, power: 0,4556007, fitness: -1
+angle: 271,3474, wait: 2,36749, power: 1,407994, fitness: -1
+angle: 263,9423, wait: 1,085956, power: 0,349606, fitness: 1,626699
+
+ITERATION NUMBER 3
+angle: 263,9423, wait: 1,085956, power: 0,349606, fitness: -1
+angle: 256,4259, wait: 1,085956, power: 0,4556007, fitness: -1
+angle: 271,3474, wait: 2,36749, power: 1,407994, fitness: -1
+angle: 256,4259, wait: 1,085956, power: 0,4556007, fitness: -1
+
+STARTING CROSSOVER
+angle: 263,9423, wait: 1,085956, power: 0,349606, fitness: -1
+angle: 256,4259, wait: 1,085956, power: 0,4556007, fitness: -1
+angle: 271,3474, wait: 2,36749, power: 1,407994, fitness: -1
+angle: 256,4259, wait: 1,085956, power: 0,4556007, fitness: -1
+
+ITERATION NUMBER 0
+angle: 263,9423, wait: 1,085956, power: 0,349606, fitness: -1
+angle: 256,4259, wait: 1,085956, power: 0,4556007, fitness: -1
+angle: 271,3474, wait: 2,36749, power: 1,407994, fitness: -1
+angle: 256,4259, wait: 1,085956, power: 0,4556007, fitness: -1
+
+ITERATION NUMBER 1
+angle: 263,9423, wait: 1,085956, power: 0,349606, fitness: -1
+angle: 256,4259, wait: 1,085956, power: 1,407994, fitness: -1
+angle: 271,3474, wait: 2,36749, power: 0,4556007, fitness: -1
+angle: 256,4259, wait: 1,085956, power: 0,4556007, fitness: -1
+
+ITERATION NUMBER 2
+angle: 263,9423, wait: 1,085956, power: 0,349606, fitness: -1
+angle: 256,4259, wait: 1,085956, power: 1,407994, fitness: -1
+angle: 256,4259, wait: 2,36749, power: 0,4556007, fitness: -1
+angle: 271,3474, wait: 1,085956, power: 0,4556007, fitness: -1
+
+STARTING MUTATION
+angle: 263,9423, wait: 1,085956, power: 0,349606, fitness: -1
+angle: 256,4259, wait: 1,085956, power: 1,407994, fitness: -1
+angle: 256,4259, wait: 2,36749, power: 0,4556007, fitness: -1
+angle: 271,3474, wait: 1,085956, power: 0,4556007, fitness: -1
+
+AFTER MUTATION
+angle: 267,2501, wait: 1,085956, power: 0,349606, fitness: -1
+angle: 248,2343, wait: 1,085956, power: 1,407994, fitness: -1
+angle: 256,4259, wait: 2,36749, power: 0,2886259, fitness: -1
+angle: 271,3474, wait: 0,9118739, power: 0,4556007, fitness: -1
+SOLUTION WAS FOUND IN GENERATION 4: angle: 248,2343, wait: 1,085956, power: 1,407994, fitness: 0

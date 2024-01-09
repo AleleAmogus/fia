@@ -5,7 +5,10 @@ using System.IO;
 
 public class Logger : MonoBehaviour
 {
-    public static void AppendAILog(String content){
-        File.AppendText("AIlog.txt", content);
+    public static void AppendAILog(string content){
+        using(StreamWriter sw = File.AppendText("AIlog.txt"))
+        {
+            sw.WriteLine(content);
+        }
     }
 }
