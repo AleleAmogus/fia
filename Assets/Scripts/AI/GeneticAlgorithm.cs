@@ -6,7 +6,7 @@ public class GeneticAlgorithm : MonoBehaviour
 {
     public static float maxWait = 4f;
     [SerializeField] int maxGens = 12;
-    int population = 6;//4
+    int population = 4;//6
     Individual[] individuals;
     Palla palla;
 
@@ -30,11 +30,11 @@ public class GeneticAlgorithm : MonoBehaviour
         }
     }
 
-    /*void RandomInitialize(){
+    void RandomInitialize(){
         for(int i = 0; i < population; i++){
             individuals[i] = new Individual(Random.Range(0f, 360f), Random.Range(0f, maxWait), Random.Range(0f, Palla.maxPower));
         }
-    }*/
+    }
 
     void Initialize(){
             for(int i = 0; i < population; i++){
@@ -44,7 +44,7 @@ public class GeneticAlgorithm : MonoBehaviour
 
     IEnumerator Execute(){
         for(int c = 0; c < 50; c++){
-            Initialize();
+            RandomInitialize();
             Individual winner = null;
             int gen = 0;
             while(true){
@@ -65,7 +65,7 @@ public class GeneticAlgorithm : MonoBehaviour
                     break;
                 Selection();
                 Crossover();
-                Mutation();
+                RandomMutation();
                 gen++;
             }
             if(winner != null){
@@ -124,7 +124,7 @@ public class GeneticAlgorithm : MonoBehaviour
         }
     }
 
-    /*void RandomMutation(){
+    void RandomMutation(){
         Logger.AppendAILog("\nSTARTING MUTATION");
         Logger.AppendIndividualsAsLaTeX(individuals);
         foreach(Individual i in individuals){
@@ -142,7 +142,7 @@ public class GeneticAlgorithm : MonoBehaviour
         }
         Logger.AppendAILog("\nAFTER MUTATION\n");
         Logger.AppendIndividualsAsLaTeX(individuals);
-    }*/
+    }
 
     void Mutation(){
             Logger.AppendAILog("\nSTARTING MUTATION");

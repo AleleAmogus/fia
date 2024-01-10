@@ -96,7 +96,7 @@ public class Palla : MonoBehaviour
 
     private void ShotBehaviour(){
         if((Time.time >= lastShootTime + 1 && rb.velocity.magnitude < 0.1f) || Time.time >= lastShootTime + 10){
-            Reset(false);
+            BasicReset(false);
         }
     }
 
@@ -106,7 +106,7 @@ public class Palla : MonoBehaviour
             ro.SetStop(val);
     }
 
-    /*public void BasicReset(bool win){
+    public void BasicReset(bool win){
         if(!win)
             SetPerformanceIndicator(10f/Mathf.Abs((FindObjectOfType<Hole>().transform.position - transform.position).magnitude), false);
         else
@@ -118,7 +118,7 @@ public class Palla : MonoBehaviour
         powerDirection = 1;
         powerMultiplier = 0f;
         SwitchState(GameState.SelectingDirection);
-    }*/
+    }
 
     public void Reset(bool win){
             if(!win)
