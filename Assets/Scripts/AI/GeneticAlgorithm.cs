@@ -43,7 +43,7 @@ public class GeneticAlgorithm : MonoBehaviour
         }
 
     IEnumerator Execute(){
-        while(true){
+        for(int c = 0; c < 50; c++){
             Initialize();
             Individual winner = null;
             int gen = 0;
