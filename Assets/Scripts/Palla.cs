@@ -24,6 +24,7 @@ public class Palla : MonoBehaviour
     float powerIncreaseSpeed = 2f;
     int powerDirection = 1;
     float lastShootTime = 0f;
+    [SerializeField] LayerMask defaultMask;
 
     [SerializeField] bool isAIactive = false;
 
@@ -105,11 +106,11 @@ public class Palla : MonoBehaviour
             ro.SetStop(val);
     }
 
-    public void Reset(bool win){
+    /*public void BasicReset(bool win){
         if(!win)
-            performanceIndicator = 10f/Mathf.Abs((FindObjectOfType<Hole>().transform.position - transform.position).magnitude);
+            SetPerformanceIndicator(10f/Mathf.Abs((FindObjectOfType<Hole>().transform.position - transform.position).magnitude), false);
         else
-            performanceIndicator = 0f;
+            SetPerformanceIndicator(0f, false);
         transform.position = startingPosition;
         transform.rotation = Quaternion.identity;
         rb.velocity = Vector3.zero;
@@ -117,7 +118,21 @@ public class Palla : MonoBehaviour
         powerDirection = 1;
         powerMultiplier = 0f;
         SwitchState(GameState.SelectingDirection);
-    }
+    }*/
+
+    public void Reset(bool win){
+            if(!win)
+                SetPerformanceIndicator(10f/Mathf.Abs((FindObjectOfType<Hole>().transform.position - transform.position).magnitude), getObstacles(transform.position));
+            else
+                SetPerformanceIndicator(0f, false);
+            transform.position = startingPosition;
+            transform.rotation = Quaternion.identity;
+            rb.velocity = Vector3.zero;
+            directionMarker.SetActive(true);
+            powerDirection = 1;
+            powerMultiplier = 0f;
+            SwitchState(GameState.SelectingDirection);
+        }
 
     public void SetRotation(float rotation){
 
@@ -126,6 +141,18 @@ public class Palla : MonoBehaviour
 
     public GameState GetGameState(){
         return state;
+    }
+
+    bool getObstacles(Vector3 position){
+        Vector3 holePosition = FindObjectOfType<Hole>().transform.position;
+        RaycastHit2D hit = Physics2D.Raycast(position, holePosition-position, (holePosition-position).magnitude, defaultMask);
+        return hit.collider != null;
+    }
+
+    void SetPerformanceIndicator(float val, bool obstacles){
+        performanceIndicator = val;
+        if(obstacles)
+            performanceIndicator/=2;
     }
 
     public float GetPerformanceIndicator(){

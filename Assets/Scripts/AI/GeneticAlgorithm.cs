@@ -5,8 +5,8 @@ using UnityEngine;
 public class GeneticAlgorithm : MonoBehaviour
 {
     public static float maxWait = 4f;
-
-    int population = 4;
+    [SerializeField] int maxGens = 12;
+    int population = 6;//4
     Individual[] individuals;
     Palla palla;
 
@@ -15,7 +15,6 @@ public class GeneticAlgorithm : MonoBehaviour
     {
         palla = FindObjectOfType<Palla>();
         individuals = new Individual[population];
-        Initialize();
         StartCoroutine(Execute());
     }
 
@@ -31,14 +30,21 @@ public class GeneticAlgorithm : MonoBehaviour
         }
     }
 
-    void Initialize(){
+    /*void RandomInitialize(){
         for(int i = 0; i < population; i++){
             individuals[i] = new Individual(Random.Range(0f, 360f), Random.Range(0f, maxWait), Random.Range(0f, Palla.maxPower));
         }
-    }
+    }*/
+
+    void Initialize(){
+            for(int i = 0; i < population; i++){
+                individuals[i] = new Individual(Random.Range(i*60f,(i+1)*60f), Random.Range(0f, maxWait), Random.Range(0f, Palla.maxPower));
+            }
+        }
 
     IEnumerator Execute(){
         while(true){
+            Initialize();
             Individual winner = null;
             int gen = 0;
             while(true){
@@ -55,15 +61,18 @@ public class GeneticAlgorithm : MonoBehaviour
                         break;
                     }
                 }
-                if(winner != null)
+                if(winner != null || gen > maxGens)
                     break;
                 Selection();
                 Crossover();
                 Mutation();
                 gen++;
             }
-            Logger.AppendAILog("\nSOLUTION WAS FOUND IN GENERATION " + gen + ": " + winner.ToString());
-            Logger.AddSolution(gen);
+            if(winner != null){
+                Logger.AppendAILog("\nSOLUTION WAS FOUND IN GENERATION " + gen + ": " + winner.ToString());
+                Logger.AddSolution(gen, false);
+            }else
+                Logger.AddSolution(gen, true);
         }
     }
     //Roulette Wheel
@@ -71,7 +80,8 @@ public class GeneticAlgorithm : MonoBehaviour
         Logger.AppendAILog("\nSTARTING SELECTION\n");
         Logger.AppendIndividualsAsLaTeX(individuals);
         Individual[] temp = new Individual[population];
-        /*DEBUG*/temp[0] = individuals[0];temp[1] = individuals[1];temp[2] = individuals[2];temp[3] = individuals[3];
+        /*DEBUG*/for(int j = 0; j < population; j++)
+            temp[j] = individuals[j];
         float sum = 0f;
         foreach(Individual i in individuals)
             sum += i.Fitness;
@@ -94,7 +104,6 @@ public class GeneticAlgorithm : MonoBehaviour
     void Crossover(){
         Logger.AppendAILog("\nSTARTING CROSSOVER\n");
         Logger.AppendIndividualsAsLaTeX(individuals);
-
         for(int i = 0; i < population-1; i++){
             int val = Random.Range(0, 3);
             if(val == 0){
@@ -115,7 +124,7 @@ public class GeneticAlgorithm : MonoBehaviour
         }
     }
 
-    void Mutation(){
+    /*void RandomMutation(){
         Logger.AppendAILog("\nSTARTING MUTATION");
         Logger.AppendIndividualsAsLaTeX(individuals);
         foreach(Individual i in individuals){
@@ -133,5 +142,26 @@ public class GeneticAlgorithm : MonoBehaviour
         }
         Logger.AppendAILog("\nAFTER MUTATION\n");
         Logger.AppendIndividualsAsLaTeX(individuals);
-    }
+    }*/
+
+    void Mutation(){
+            Logger.AppendAILog("\nSTARTING MUTATION");
+            Logger.AppendIndividualsAsLaTeX(individuals);
+            foreach(Individual i in individuals){
+                int val = Random.Range(0, 3);
+                float multiplier = 1/i.Fitness;
+                if(val == 0){
+                    float amount = Random.Range(-10f, 10f);
+                    i.Angle += amount*multiplier;
+                }else if(val == 1){
+                    float amount = Random.Range(-0.5f, 0.5f);
+                    i.Wait += amount*multiplier;
+                }else{
+                    float amount = Random.Range(-0.3f, 0.3f);
+                    i.Power += amount*multiplier;
+                }
+            }
+            Logger.AppendAILog("\nAFTER MUTATION\n");
+            Logger.AppendIndividualsAsLaTeX(individuals);
+        }
 }

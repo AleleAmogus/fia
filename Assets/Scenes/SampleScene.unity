@@ -774,6 +774,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 244215eaba3ee8847b695d510feb48dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxGens: 12
 --- !u!4 &537808342
 Transform:
   m_ObjectHideFlags: 0
@@ -1011,6 +1012,9 @@ MonoBehaviour:
   basePower: 1100
   directionMarker: {fileID: 822302330}
   powerSelector: {fileID: 243602565}
+  defaultMask:
+    serializedVersion: 2
+    m_Bits: 1
   isAIactive: 1
 --- !u!212 &782694486
 SpriteRenderer:
