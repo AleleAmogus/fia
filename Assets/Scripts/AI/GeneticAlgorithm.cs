@@ -104,7 +104,7 @@ public class GeneticAlgorithm : MonoBehaviour
     void Crossover(){
         Logger.AppendAILog("\nSTARTING CROSSOVER\n");
         Logger.AppendIndividualsAsLaTeX(individuals);
-        for(int i = 0; i < population-1; i++){
+        for(int i = 0; i < population-2; i= i+2){
             int val = Random.Range(0, 3);
             if(val == 0){
                 float temp = individuals[i].Angle;
@@ -119,6 +119,8 @@ public class GeneticAlgorithm : MonoBehaviour
                 individuals[i].Power = individuals[i+1].Power;
                 individuals[i+1].Power = temp;
             }
+        individuals[i].Fitness = (individuals[i].Fitness + individuals[i+1].Fitness)/2;
+        individuals[i+1].Fitness = individuals[i].Fitness;
         Logger.AppendAILog("\nITERATION NUMBER " + i);
         Logger.AppendIndividualsAsLaTeX(individuals);
         }
