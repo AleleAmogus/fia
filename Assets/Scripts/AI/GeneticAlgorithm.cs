@@ -6,7 +6,7 @@ public class GeneticAlgorithm : MonoBehaviour
 {
     public static float maxWait = 4f;
     [SerializeField] int maxGens = 12;
-    int population = 4;//6
+    int population = 6;//4
     Individual[] individuals;
     Palla palla;
 
@@ -44,7 +44,7 @@ public class GeneticAlgorithm : MonoBehaviour
 
     IEnumerator Execute(){
         for(int c = 0; c < 50; c++){
-            RandomInitialize();
+            Initialize();
             Individual winner = null;
             int gen = 0;
             while(true){
@@ -65,7 +65,7 @@ public class GeneticAlgorithm : MonoBehaviour
                     break;
                 Selection();
                 Crossover();
-                RandomMutation();
+                Mutation();
                 gen++;
             }
             if(winner != null){
@@ -104,7 +104,7 @@ public class GeneticAlgorithm : MonoBehaviour
     void Crossover(){
         Logger.AppendAILog("\nSTARTING CROSSOVER\n");
         Logger.AppendIndividualsAsLaTeX(individuals);
-        for(int i = 0; i < population-2; i= i+2){
+        for(int i = 0; i < population-1; i= i+2){
             int val = Random.Range(0, 3);
             if(val == 0){
                 float temp = individuals[i].Angle;
