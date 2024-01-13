@@ -9,6 +9,7 @@ public class GeneticAlgorithm : MonoBehaviour
     int population = 6;//4
     Individual[] individuals;
     Palla palla;
+    Individual bestFitting;
 
     // Start is called before the first frame update
     void Start()
@@ -63,6 +64,7 @@ public class GeneticAlgorithm : MonoBehaviour
                 }
                 if(winner != null || gen > maxGens)
                     break;
+                Elitism();
                 Selection();
                 Crossover();
                 Mutation();
@@ -75,6 +77,21 @@ public class GeneticAlgorithm : MonoBehaviour
                 Logger.AddSolution(gen, true);
         }
     }
+    void Elitism(){
+        int worst = 0;
+        int best = 0;
+        for(int i = 1; i < population-1; i++){
+            if(individuals[i].Fitness < individuals[worst].Fitness)
+                worst = i;
+            else if(individuals[i].Fitness > individuals[best].Fitness)
+                best = i;
+        }
+        if(bestFitting != null && individuals[worst].Fitness < bestFitting.Fitness)
+            individuals[worst] = bestFitting;
+        if(bestFitting == null || individuals[best].Fitness > bestFitting.Fitness)
+            bestFitting = (Individual)individuals[best].Clone();
+    }
+
     //Roulette Wheel
     void Selection(){
         Logger.AppendAILog("\nSTARTING SELECTION\n");
@@ -126,7 +143,7 @@ public class GeneticAlgorithm : MonoBehaviour
         }
     }
 
-    void RandomMutation(){
+    void Mutation(){
         Logger.AppendAILog("\nSTARTING MUTATION");
         Logger.AppendIndividualsAsLaTeX(individuals);
         foreach(Individual i in individuals){
@@ -145,25 +162,4 @@ public class GeneticAlgorithm : MonoBehaviour
         Logger.AppendAILog("\nAFTER MUTATION\n");
         Logger.AppendIndividualsAsLaTeX(individuals);
     }
-
-    void Mutation(){
-            Logger.AppendAILog("\nSTARTING MUTATION");
-            Logger.AppendIndividualsAsLaTeX(individuals);
-            foreach(Individual i in individuals){
-                int val = Random.Range(0, 3);
-                float multiplier = 1/i.Fitness;
-                if(val == 0){
-                    float amount = Random.Range(-10f, 10f);
-                    i.Angle += amount*multiplier;
-                }else if(val == 1){
-                    float amount = Random.Range(-0.5f, 0.5f);
-                    i.Wait += amount*multiplier;
-                }else{
-                    float amount = Random.Range(-0.3f, 0.3f);
-                    i.Power += amount*multiplier;
-                }
-            }
-            Logger.AppendAILog("\nAFTER MUTATION\n");
-            Logger.AppendIndividualsAsLaTeX(individuals);
-        }
 }
