@@ -96,7 +96,7 @@ public class Palla : MonoBehaviour
 
     private void ShotBehaviour(){
         if((Time.time >= lastShootTime + 1 && rb.velocity.magnitude < 0.1f) || Time.time >= lastShootTime + 10){
-            BasicReset(false);
+            Reset(false);
         }
     }
 
@@ -113,6 +113,7 @@ public class Palla : MonoBehaviour
             SetPerformanceIndicator(0f, false);
         transform.position = startingPosition;
         transform.rotation = Quaternion.identity;
+        RotatingObstacle.ResetObstacles();
         rb.velocity = Vector3.zero;
         directionMarker.SetActive(true);
         powerDirection = 1;
@@ -127,6 +128,7 @@ public class Palla : MonoBehaviour
                 SetPerformanceIndicator(0f, false);
             transform.position = startingPosition;
             transform.rotation = Quaternion.identity;
+            RotatingObstacle.ResetObstacles();
             rb.velocity = Vector3.zero;
             directionMarker.SetActive(true);
             powerDirection = 1;
