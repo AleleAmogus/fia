@@ -26,7 +26,19 @@ public class Palla : MonoBehaviour
     float lastShootTime = 0f;
     [SerializeField] LayerMask defaultMask;
 
-    [SerializeField] bool isAIactive = false;
+    static bool isAIactive = false;
+
+    public static void ToggleAI(){
+        isAIactive = !isAIactive;
+    }
+
+    public static void DisableAI(){
+        isAIactive = false;
+    }
+
+    public static bool GetAIactive(){
+        return isAIactive;
+    }
 
     void Start()
     {
@@ -122,9 +134,9 @@ public class Palla : MonoBehaviour
     }
 
     public void Reset(bool win){
-            if(!win)
+            if(!win){
                 SetPerformanceIndicator(10f/Mathf.Abs((FindObjectOfType<Hole>().transform.position - transform.position).magnitude), getObstacles(transform.position));
-            else
+            }else
                 SetPerformanceIndicator(0f, false);
             transform.position = startingPosition;
             transform.rotation = Quaternion.identity;

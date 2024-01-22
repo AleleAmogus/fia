@@ -5,9 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class LevelButton : MonoBehaviour
 {
-    [SerializeField] Scene level;
+    [SerializeField] int level;
 
     public void LoadLevel(){
-        SceneManager.LoadScene(level.name);
+        SceneManager.LoadScene("Livello" + level);
+    }
+
+    public void ToggleAI(){
+        Palla.ToggleAI();
     }
 }

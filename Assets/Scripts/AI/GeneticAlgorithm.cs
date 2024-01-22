@@ -14,9 +14,13 @@ public class GeneticAlgorithm : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        palla = FindObjectOfType<Palla>();
-        individuals = new Individual[population];
-        StartCoroutine(Execute());
+        if(Palla.GetAIactive()){
+            palla = FindObjectOfType<Palla>();
+            individuals = new Individual[population];
+            StartCoroutine(Execute());
+        }
+        else
+            gameObject.SetActive(false);
     }
 
     // Update is called once per frame
