@@ -6,14 +6,15 @@ public class GeneticAlgorithm : MonoBehaviour
 {
     public static float maxWait = 4f;
     [SerializeField] int maxGens = 12;
-    int population = 6;//4
+    int population = 6;//4 nella versione iniziale
     Individual[] individuals;
     Palla palla;
     Individual bestFitting;
+    //nota: la fitness di un individuo è assegnata nella classe "Palla", metodo "Reset".
 
-    // Start is called before the first frame update
     void Start()
     {
+        // Quando viene caricato il livello controlla che l'IA sia attiva. Se lo è, avvia l'algoritmo.
         if(Palla.GetAIactive()){
             palla = FindObjectOfType<Palla>();
             individuals = new Individual[population];
@@ -34,25 +35,29 @@ public class GeneticAlgorithm : MonoBehaviour
                 Time.timeScale *= 2;
         }
     }
-
+    /* Prima versione: inizializzazione casuale.
     void RandomInitialize(){
         for(int i = 0; i < population; i++){
             individuals[i] = new Individual(Random.Range(0f, 360f), Random.Range(0f, maxWait), Random.Range(0f, Palla.maxPower));
         }
-    }
+    }*/
 
+    //Versione finale: l'i-esimo individuo ha un'angolazione compresa tra 60*i e 60*(i+1) gradi.
     void Initialize(){
             for(int i = 0; i < population; i++){
                 individuals[i] = new Individual(Random.Range(i*60f,(i+1)*60f), Random.Range(0f, maxWait), Random.Range(0f, Palla.maxPower));
             }
         }
 
+    //Avvia la simulazione
     IEnumerator Execute(){
+    //Per testare le prestazioni, la simulazione si ferma dopo aver trovato 50 soluzioni.
         for(int c = 0; c < 50; c++){
-            Initialize();
+            Initialize(); //Inizializza la popolazione
             Individual winner = null;
             int gen = 0;
             while(true){
+                //Esegui tutti i passaggi della simulazione (regola angolo, attendi, seleziona potenza)
                 foreach(Individual i in individuals){
                     palla.SetRotation(i.Angle);
                     yield return new WaitForSeconds(i.Wait);
@@ -61,6 +66,7 @@ public class GeneticAlgorithm : MonoBehaviour
                     palla.SwitchToShot();
                     yield return new WaitUntil(() => palla.GetGameState() == GameState.SelectingDirection);
                     i.Fitness = palla.GetPerformanceIndicator();
+                    //Il valore 0 alla fitness è un valore sentinella: indica che la pallina ha centrato la buca.
                     if(i.Fitness == 0){
                         winner = i;
                         break;
@@ -68,12 +74,13 @@ public class GeneticAlgorithm : MonoBehaviour
                 }
                 if(winner != null || gen > maxGens)
                     break;
-                Elitism();
-                Selection();
-                Crossover();
-                Mutation();
-                gen++;
+                Elitism(); //Applica elitismo;
+                Selection(); //Applica selezione;
+                Crossover(); //Applica crossover;
+                Mutation(); //Applica mutazione;
+                gen++; //aumenta il conto delle generazioni
             }
+            //La classe Logger è utilizzata per tenere traccia delle prestazioni dell'algoritmo su un documento di testo.
             if(winner != null){
                 Logger.AppendAILog("\nSOLUTION WAS FOUND IN GENERATION " + gen + ": " + winner.ToString());
                 Logger.AddSolution(gen, false);
@@ -84,24 +91,30 @@ public class GeneticAlgorithm : MonoBehaviour
     void Elitism(){
         int worst = 0;
         int best = 0;
+        //trova migliore e peggiore della popolazione attuale
         for(int i = 1; i < population-1; i++){
             if(individuals[i].Fitness < individuals[worst].Fitness)
                 worst = i;
             else if(individuals[i].Fitness > individuals[best].Fitness)
                 best = i;
         }
+        //Si confrontano il migliore della scorsa generazione (bestFitting) con il peggiore di quella attuale:
+        //se il primo ha fitness maggiore si sostituisce al secondo.
         if(bestFitting != null && individuals[worst].Fitness < bestFitting.Fitness)
             individuals[worst] = bestFitting;
+        //Si confrontano il migliore della scorsa generazione (bestFitting) con il migliore di quella attuale:
+        //se il secondo ha fitness maggiore diventa il nuovo best-fitting.
         if(bestFitting == null || individuals[best].Fitness > bestFitting.Fitness)
             bestFitting = (Individual)individuals[best].Clone();
     }
 
-    //Roulette Wheel
+    //Roulette Wheel: in sostanza, ogni individuo viene selezionato nella nuova generazione con una probabilità
+    //proporzionale alla fitness.
     void Selection(){
         Logger.AppendAILog("\nSTARTING SELECTION\n");
         Logger.AppendIndividualsAsLaTeX(individuals);
         Individual[] temp = new Individual[population];
-        /*DEBUG*/for(int j = 0; j < population; j++)
+        for(int j = 0; j < population; j++)
             temp[j] = individuals[j];
         float sum = 0f;
         foreach(Individual i in individuals)
@@ -122,6 +135,10 @@ public class GeneticAlgorithm : MonoBehaviour
         individuals = temp;
     }
 
+    //Si selezionano gli individui a coppie: per ogni coppia si scambia un parametro casuale tra angolazione, attesa e
+    //potenza.
+    //NOTA: non funziona con popolazioni dispari. Essendo tuttavia questo algoritmo finalizzato ad una presenzatione,
+    //non si è considerato necessario risolvere il problema.
     void Crossover(){
         Logger.AppendAILog("\nSTARTING CROSSOVER\n");
         Logger.AppendIndividualsAsLaTeX(individuals);
@@ -147,6 +164,8 @@ public class GeneticAlgorithm : MonoBehaviour
         }
     }
 
+    //si sceglie un parametro casuale tra angolazione, attesa e potenza: questo viene mutato di un valore casuale
+    //compreso in un range
     void Mutation(){
         Logger.AppendAILog("\nSTARTING MUTATION");
         Logger.AppendIndividualsAsLaTeX(individuals);

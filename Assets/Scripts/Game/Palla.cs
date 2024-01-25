@@ -118,6 +118,7 @@ public class Palla : MonoBehaviour
             ro.SetStop(val);
     }
 
+    /* VERSIONE INIZIALE: applicava l'indicatore di performance senza considerare la presenza di ostacoli.
     public void BasicReset(bool win){
         if(!win)
             SetPerformanceIndicator(10f/Mathf.Abs((FindObjectOfType<Hole>().transform.position - transform.position).magnitude), false);
@@ -131,10 +132,11 @@ public class Palla : MonoBehaviour
         powerDirection = 1;
         powerMultiplier = 0f;
         SwitchState(GameState.SelectingDirection);
-    }
+    }*/
 
     public void Reset(bool win){
             if(!win){
+                //Data la soluzione, segna la sua performance.
                 SetPerformanceIndicator(10f/Mathf.Abs((FindObjectOfType<Hole>().transform.position - transform.position).magnitude), getObstacles(transform.position));
             }else
                 SetPerformanceIndicator(0f, false);
